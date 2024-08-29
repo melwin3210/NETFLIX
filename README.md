@@ -1,7 +1,20 @@
 #   Netfilx clone
-
--Create react app
--configured tailwind
+ - Create react app
+ - configured tailwind
+ - Header
+ - Routing of App
+ - Login Form
+ - Signup Form
+ - Form validation
+ - userRef hook 
+ - Firebase setup
+ - Deloying app to prod
+ - Create signup user account 
+ - Implement ign in user API
+ - Created redux store with user slice
+ - Implement signout
+ - Upadate profile
+ - Fetch from TMDB Movie
 
 
 # Features
