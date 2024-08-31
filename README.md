@@ -24,6 +24,8 @@
  - new containers added
  - Trailer fetched
  - autoplay youtube trailer
+ - made the UI better
+ - Secondary container fetced movies data
 
 
 # Features
