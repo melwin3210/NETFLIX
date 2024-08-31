@@ -9,7 +9,6 @@ const VideoBackground = ({ trailer }) => {
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
-      <h1>{trailer}</h1>
     </div>
   );
 };

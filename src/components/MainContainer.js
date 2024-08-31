@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { json } from "react-router-dom";
 import VideoTile from "./VideoTile";
 import VideoBackground from "./VideoBackground";
 
