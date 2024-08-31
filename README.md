@@ -15,6 +15,15 @@
  - Implement signout
  - Upadate profile
  - Fetch from TMDB Movie
+ - Bug fix: sign up user display name and profile pic update
+ - Bug Fix: if the user is not logged in redicret /browse to login pange & viceversa
+ - unsuscibe on onauth function callback
+ - TMDB database website not working, so harcoded data and fetched it
+ - Created custom hooks for movies
+ - updated store with movies data
+ - new containers added
+ - Trailer fetched
+ - autoplay youtube trailer
 
 
 # Features
