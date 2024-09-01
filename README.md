@@ -26,6 +26,8 @@
  - autoplay youtube trailer
  - made the UI better
  - Secondary container fetced movies data
+ - GPT search feature
+ - language translater added for GPT Page
 
 
 # Features
