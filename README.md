@@ -28,6 +28,7 @@
  - Secondary container fetced movies data
  - Movie search feature
  - language translater added for Movie search Page
+ - created app responsive
 
 
 # Features
