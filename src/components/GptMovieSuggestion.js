@@ -9,7 +9,7 @@ const GptMovieSuggestion = () => {
   const arrayConvertMovie = [searchedMovie]
   
   return (
-    <div className='flex bg-black bg-opacity-80 w-1/2 justify-center mt-10 m-auto'>
+    <div className='flex bg-black bg-opacity-80 md:w-1/2 justify-center mt-10 m-auto'>
       <MoviesList title={searchedMovie.title} movies={arrayConvertMovie}></MoviesList>
       <MovieDetails  movieDetails={searchedMovie}/>
     </div>

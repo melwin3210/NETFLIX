@@ -2,7 +2,7 @@ import React from 'react'
 
 const MovieDetails = ({movieDetails}) => {
   return (
-    <div className='text-white '>
+    <div className='text-white'>
         <h1 className='font-bold'>Description</h1>
         <p1>{movieDetails.description}</p1>
         <h1 className='font-bold'>Year</h1>

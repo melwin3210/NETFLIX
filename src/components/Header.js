@@ -58,10 +58,10 @@ const Header = () => {
   }
   const gptSearchPage = useSelector((store) => store.gpt.showGptSearch);
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={LOGO} alt="Logo"></img>
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col justify-between mx- md:flex-row">
+      <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="Logo"></img>
       {user && (
-        <div className="flex p-2 ">
+        <div className="flex p-2 justify-between ">
           {
             gptSearchPage && <select onChange={handleLanguageChange} className="p-2 m-2 bg-gray-900 text-white">
             {SUPPORTED_LANGUAGES.map((lang) => (
@@ -75,9 +75,9 @@ const Header = () => {
             className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearchClick}
           >
-            {gptSearchPage ? "Homepage" : "GPT Search"}
+            {gptSearchPage ? "Homepage" : "Search Movies"}
           </button>
-          <img className="w-12 h-12 " src={user.photoURL} alt="User Icon"></img>
+          <img className="md:w-12 h-12 hidden md:inline-block" src={user.photoURL} alt="User Icon"></img>
           <button onClick={handleSignOut} className="font-bold text-white">
             Sign Out
           </button>

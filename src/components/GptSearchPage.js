@@ -7,13 +7,17 @@ const GptSearchPage = () => {
   return (
     <div>
         <div className="absolute -z-10">
-        <img
+        <img className='h-screen w-screen object-cover'
           src= {BG_URL}
           alt="Logo"
         ></img>
       </div>
-        <GptSearchBoxTab></GptSearchBoxTab>
-        <GptMovieSuggestion></GptMovieSuggestion>
+      <div className=''>
+      <GptSearchBoxTab></GptSearchBoxTab>
+      <GptMovieSuggestion></GptMovieSuggestion>
+
+      </div>
+        
     </div>
   )
 }

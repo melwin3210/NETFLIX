@@ -45,15 +45,15 @@ const GptSearchBoxTab = () => {
     }     
     
   return (
-    <div className="pt-[10%] flex justify-center">
-      <form className="w-1/2 bg-black grid grid-cols-12" onClick={(e)=>e.preventDefault()}>
+    <div className="pt-[35%] md:p-0 md:pt-[10%] flex justify-center">
+      <form className="md:w-1/2 bg-black grid grid-cols-12 sm:text-sm " onClick={(e)=>e.preventDefault()}>
         <input
         ref={searchText}
           type="text"
           className="p-4 m-4 col-span-9"
           placeholder={lang[langKey]?.gptSearchPlaceHolder}
         ></input>
-        <button onClick={handleGptSearchClick} className=" col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg">{lang[langKey]?.search} 
+        <button onClick={handleGptSearchClick} className=" col-span-3 m-4 py-2 px-4  bg-red-700 text-white rounded-lg">{lang[langKey]?.search} 
         </button>
       </form>
     </div>

@@ -1,15 +1,15 @@
 const lang = {
     English: {
         search: 'Search',
-        gptSearchPlaceHolder: 'What would you like to watch?'
+        gptSearchPlaceHolder: 'Search movie.'
     },
     Malayalam: {
         search: 'തിരയുക',
-        gptSearchPlaceHolder: 'നിങ്ങൾ എന്താണ് കാണാൻ ആഗ്രഹിക്കുന്നത്?'
+        gptSearchPlaceHolder: 'സിനിമ തിരയുക.'
     },
     Spanish: {
         search: 'Buscar',
-        gptSearchPlaceHolder: '¿Qué te gustaría ver?'
+        gptSearchPlaceHolder: 'Buscar película'
     }
 }
 
