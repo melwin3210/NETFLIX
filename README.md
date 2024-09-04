@@ -1,7 +1,34 @@
 #   Netfilx clone
-
--Create react app
--configured tailwind
+ - Create react app
+ - configured tailwind
+ - Header
+ - Routing of App
+ - Login Form
+ - Signup Form
+ - Form validation
+ - userRef hook 
+ - Firebase setup
+ - Deloying app to prod
+ - Create signup user account 
+ - Implement ign in user API
+ - Created redux store with user slice
+ - Implement signout
+ - Upadate profile
+ - Fetch from TMDB Movie
+ - Bug fix: sign up user display name and profile pic update
+ - Bug Fix: if the user is not logged in redicret /browse to login pange & viceversa
+ - unsuscibe on onauth function callback
+ - TMDB database website not working, so harcoded data and fetched it
+ - Created custom hooks for movies
+ - updated store with movies data
+ - new containers added
+ - Trailer fetched
+ - autoplay youtube trailer
+ - made the UI better
+ - Secondary container fetced movies data
+ - Movie search feature
+ - language translater added for Movie search Page
+ - created app responsive
 
 
 # Features
