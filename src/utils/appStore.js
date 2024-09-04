@@ -3,6 +3,7 @@ import  userReducer  from "./userSlice";
 import movieReducer from "./movieSlice";
 import gptReducer from "./gptSlice";
 import configReducer from "./configSlice"
+import searchSuggestionSlice from "./searchSuggestionSlice";
 
 const appStore = configureStore(
     {
@@ -10,7 +11,8 @@ const appStore = configureStore(
             user: userReducer,
             movies: movieReducer,
             gpt: gptReducer,
-            config: configReducer
+            config: configReducer,
+            suggestion:searchSuggestionSlice
         }
     }
 )
