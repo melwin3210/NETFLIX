@@ -15,7 +15,7 @@ const GptSearchBoxTab = () => {
 
     const movienameSuggest = async (text) =>{
       setSelectedSuggestion(null);
-      const suggestion = await fetch("/api/complete/search?client=youtube&ds=yt&hl=en&client=firefox&q="+text)
+      const suggestion = await fetch("http://clients1.google.com/complete/search?hl=en&output=toolbar&q="+text)
       const respon = await suggestion.json()
         dispatch(addMovieSearchSuggestion(respon[1]))
     }
