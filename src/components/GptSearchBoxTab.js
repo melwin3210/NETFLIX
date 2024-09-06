@@ -9,6 +9,7 @@ import { YOUTUBE_SEARCH_SUGGEST_API } from "../utils/constants";
 const GptSearchBoxTab = () => {
     let searchText = useRef(null)
     const dispatch = useDispatch()
+    const [search, setSearch] = useState(false)
   const [selectedSuggestion, setSelectedSuggestion] = useState(null);
     const langKey = useSelector(store=>store?.config?.lang)
     let movieSuggestionsList = useSelector(store=>store?.suggestion?.movieSuggestions)
@@ -25,6 +26,10 @@ const GptSearchBoxTab = () => {
     
 
     const handleGptSearchClick = async (suggestion) =>{
+      setSearch(true)
+      dispatch(addSearchedMovie({
+        searching:"inProgress"
+      }))
       // Set the selected suggestion as the query
     // Optionally clear suggestions or perform any other actions
     setSelectedSuggestion(suggestion);
@@ -43,7 +48,8 @@ const GptSearchBoxTab = () => {
         // })
       
           
-        const data= await fetch("https://www.omdbapi.com/?apikey="+process.env.REACT_APP_OMDB_KEY+"&t="+searchText.current.value)       
+        const data= await fetch("https://www.omdbapi.com/?apikey="+process.env.REACT_APP_OMDB_KEY+"&t="+searchText.current.value) 
+        setSearch(false)      
          searchText.current.value = ''
         const {Poster, Plot, Title, Year, Director, Writer, Actors, Language,imdbRating} = await data.json()
         dispatch(addSearchedMovie({
@@ -71,14 +77,14 @@ const GptSearchBoxTab = () => {
         
         
       ></input>
-      <button onClick={handleGptSearchClick} className=" col-span-3 m-4 py-2 px-4  bg-red-700 text-white rounded-lg">{lang[langKey]?.search} 
+      <button onClick={handleGptSearchClick} className=" col-span-3 m-4 py-2 px-4  bg-red-700 text-white rounded-lg">{search ? 'Loading' : (lang[langKey]?.search)} 
       </button>
     </form>
     
   </div>
   {movieSuggestionsList.length > 0 && !selectedSuggestion &&<div className="md:p-0  flex justify-center ">
     
-  <ul className="md:w-1/2 grid grid-cols-12   bg-gradient-to-r from-black  text-white">
+  <ul className="md:w-1/2 w-1  grid grid-cols-12 absolute bg-gradient-to-r from-black  text-white">
   {movieSuggestionsList && movieSuggestionsList.map((movieName,i)=><li key={i} className="m-4 col-span-9" onClick={()=>(searchText.current.value=movieName) && handleGptSearchClick(movieName) }>{movieName}</li>)}
     
   </ul>

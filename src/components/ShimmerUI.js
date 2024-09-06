@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "./Header";
 
-const ShimmerUI = () => {
+const ShimmerUI = ({page}) => {
   return (
-    <div className=" bg-gradient-to-b from-black">
-        <Header />
+    <div className= {(page!='movieSearch' ? 'bg-gradient-to-b from-black' : '')}>
+        { page!='movieSearch' && <Header />}
       <div class="flex space-x-2 justify-center items-center  h-screen dark:invert">
         <span class="sr-only">Loading...</span>
         <div class="h-8 w-8 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></div>

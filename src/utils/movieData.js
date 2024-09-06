@@ -3,10 +3,10 @@ export const MAIN_MOVIES = [
     
   {
     movieTrailerUrl:
-      "https://www.youtube.com/embed/o17MF9vnabg?si=yYfK5u-zzU9lM7g9&autoplay=1&mute=1",
-    movie_name: "Mufasa: The Lion King",
-    language: "English",
-    description:"Simba, having become king of the Pride Lands, is determined for his cub to follow in his paw prints while the origins of his late father Mufasa are explored."
+      "https://www.youtube.com/embed/UgZ7hqkpAkU?si=yO-04F3j37pvyhox&autoplay=1&mute=1",
+    movie_name: "TURBO",
+    language: "Malayalam",
+    description:"Jose, a jeep driver from Idukki gets in trouble and is forced to relocate to Chennai where he gets entangled with Indhu and his best friend, Jerry. A bunch of surprises in the form of Vetrivel and others await Jose in Chennai."
   }
 ];
 export const UPCOMING_MOVIES_DATA = [
