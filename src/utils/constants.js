@@ -5,3 +5,4 @@ export const SUPPORTED_LANGUAGES = [
     {identifier: 'malayalam', name:'Malayalam'},
     {identifier: 'spanish', name:'Spanish'}
 ]
+export const YOUTUBE_SEARCH_SUGGEST_API = 'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q='

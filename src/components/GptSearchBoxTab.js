@@ -3,20 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
 import { addSearchedMovie } from "../utils/movieSlice";
 import { addMovieSearchSuggestion } from "../utils/searchSuggestionSlice";
+import { YOUTUBE_SEARCH_SUGGEST_API } from "../utils/constants";
 
 
 const GptSearchBoxTab = () => {
     let searchText = useRef(null)
     const dispatch = useDispatch()
-    const [query, setQuery] = useState('');
   const [selectedSuggestion, setSelectedSuggestion] = useState(null);
     const langKey = useSelector(store=>store?.config?.lang)
     let movieSuggestionsList = useSelector(store=>store?.suggestion?.movieSuggestions)
 
     const movienameSuggest = async (text) =>{
       setSelectedSuggestion(null);
-      const suggestion = await fetch("http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q="+text)
+      const suggestion = await fetch(YOUTUBE_SEARCH_SUGGEST_API +text ) 
+      
       const respon = await suggestion.json()
+      
         dispatch(addMovieSearchSuggestion(respon[1]))
     }
     
@@ -24,7 +26,6 @@ const GptSearchBoxTab = () => {
 
     const handleGptSearchClick = async (suggestion) =>{
       // Set the selected suggestion as the query
-    setQuery(suggestion);
     // Optionally clear suggestions or perform any other actions
     setSelectedSuggestion(suggestion);
 

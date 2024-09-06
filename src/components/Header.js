@@ -34,7 +34,7 @@ const Header = () => {
         // User is signed out
         // ...
         dispatch(removeUser());
-        navigate("/");
+        navigate("/login");
       }
     });
     return () => unsuscribe();
@@ -46,7 +46,7 @@ const Header = () => {
       })
       .catch((error) => {
         // An error happened.
-        navigate("/");
+        navigate("/login");
       });
   };
   const handleGptSearchClick = () => {
