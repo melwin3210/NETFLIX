@@ -33,6 +33,7 @@ const GptSearchBoxTab = () => {
       // Set the selected suggestion as the query
     // Optionally clear suggestions or perform any other actions
     setSelectedSuggestion(suggestion);
+    dispatch(addMovieSearchSuggestion([]))
 
       
       

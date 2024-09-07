@@ -7,15 +7,14 @@ import ShimmerUI from './ShimmerUI'
 const GptMovieSuggestion = () => {
   const {searchedMovie} = useSelector(store=>store?.movies)
   if(searchedMovie?.searching) return <ShimmerUI page={'movieSearch'} />
-  if(!searchedMovie?.title) return null
   const arrayConvertMovie = [searchedMovie]
 
  
   
   return (
     <div className='flex bg-black bg-opacity-80 md:w-1/2 justify-center mt-10 m-auto'>
-      <MoviesList title={searchedMovie.title} movies={arrayConvertMovie}></MoviesList>
-      <MovieDetails  movieDetails={searchedMovie}/>
+      <MoviesList title={searchedMovie.title || 'No details available!!!'} movies={arrayConvertMovie}></MoviesList>
+      { searchedMovie.title && <MovieDetails  movieDetails={searchedMovie}/>}
     </div>
   )
 }
