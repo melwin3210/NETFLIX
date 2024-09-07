@@ -3,10 +3,10 @@ export const MAIN_MOVIES = [
     
   {
     movieTrailerUrl:
-      "https://www.youtube.com/embed/UgZ7hqkpAkU?si=yO-04F3j37pvyhox&autoplay=1&mute=1",
-    movie_name: "TURBO",
-    language: "Malayalam",
-    description:"Jose, a jeep driver from Idukki gets in trouble and is forced to relocate to Chennai where he gets entangled with Indhu and his best friend, Jerry. A bunch of surprises in the form of Vetrivel and others await Jose in Chennai."
+      "https://www.youtube.com/embed/49xWJJvpjzI?si=yO-04F3j37pvyhox&autoplay=1&mute=1",
+    movie_name: "Avengers: Infinity War",
+    language: "English",
+    description:"The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe."
   }
 ];
 export const UPCOMING_MOVIES_DATA = [
