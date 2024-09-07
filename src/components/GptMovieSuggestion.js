@@ -7,7 +7,7 @@ import ShimmerUI from './ShimmerUI'
 const GptMovieSuggestion = () => {
   const {searchedMovie} = useSelector(store=>store?.movies)
   if(searchedMovie?.searching) return <ShimmerUI page={'movieSearch'} />
-  if(!searchedMovie) return null
+  if(!searchedMovie.title) return null
   const arrayConvertMovie = [searchedMovie]
 
  
