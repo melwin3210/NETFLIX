@@ -6,21 +6,8 @@ import { addSearchedMovie } from '../utils/movieSlice'
 const MovieCard = ({movieData}) => {
   const dispatch = useDispatch()
   const movieCardClick = async  (movieName) => {
-    dispatch(addSearchedMovie({
-      searching:"inProgress"
-    }))
+    dispatch(addSearchedMovie(movieName))
     dispatch(toggleSearchView());
-    const data= await fetch("https://www.omdbapi.com/?apikey="+process.env.REACT_APP_OMDB_KEY+"&t="+movieName) 
-    const {Poster, Plot, Title, Year, Director, Writer, Actors, Language,imdbRating} = await data.json()
-        dispatch(addSearchedMovie({
-          moviePosterUrl:Poster,
-          description:Plot,
-          title:Title,
-          year:Year,
-          director:Director,
-          actors:Actors,
-          IMDBrating:imdbRating
-        }))
 
   }
   return (
