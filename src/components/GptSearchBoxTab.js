@@ -52,7 +52,7 @@ const GptSearchBoxTab = () => {
         const data= await fetch("https://www.omdbapi.com/?apikey="+process.env.REACT_APP_OMDB_KEY+"&t="+searchText.current.value) 
         setSearch(false)      
          searchText.current.value = ''
-        const {Poster, Plot, Title, Year, Director, Writer, Actors, Language,imdbRating} = await data.json()
+        const {Poster, Plot, Title, Year, Director, Writer, Actors, Language,imdbRating,Error} = await data.json()
         dispatch(addSearchedMovie({
           moviePosterUrl:Poster,
           description:Plot,
@@ -60,7 +60,8 @@ const GptSearchBoxTab = () => {
           year:Year,
           director:Director,
           actors:Actors,
-          IMDBrating:imdbRating
+          IMDBrating:imdbRating,
+          Error:Error
 
 
         }))
