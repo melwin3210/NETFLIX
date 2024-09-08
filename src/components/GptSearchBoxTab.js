@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
 import { addMovieSearchSuggestion } from "../utils/searchSuggestionSlice";
-import { IMBD_API, IMDB_API_PARAMS, YOUTUBE_SEARCH_SUGGEST_API } from "../utils/constants";
+import { IMBD_API, IMDB_API_PARAMS, PROXY_API, YOUTUBE_SEARCH_SUGGEST_API } from "../utils/constants";
 import useMovieDetails from "../hooks/useMovieDetails";
 
 const GptSearchBoxTab = () => {
@@ -18,7 +18,7 @@ const GptSearchBoxTab = () => {
 
   const movienameSuggest = async (text) => {
     setSelectedSuggestion(null);
-     const suggestion = await fetch(IMBD_API+text+IMDB_API_PARAMS)
+     const suggestion = await fetch(PROXY_API+IMBD_API+text+IMDB_API_PARAMS)
     // const suggestion = await fetch(YOUTUBE_SEARCH_SUGGEST_API + text);
     
 
