@@ -29,12 +29,14 @@ const GptSearchBoxTab = () => {
   };
 
   const handleGptSearchClick = async (suggestion) => {
-    reFetch(searchText.current.value);
+    reFetch(searchText.current.value).then(()=>{
+      searchText.current.value = "";
+    })
     setSearch(true);
     setSelectedSuggestion(suggestion);
     dispatch(addMovieSearchSuggestion([]));
     setSearch(false);
-    searchText.current.value = "";
+    
   };
 
   return (

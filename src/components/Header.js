@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { toggleSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
+import { addMovieSearchSuggestion } from "../utils/searchSuggestionSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -51,6 +52,7 @@ const Header = () => {
   };
   const handleGptSearchClick = () => {
     dispatch(toggleSearchView());
+    dispatch(addMovieSearchSuggestion([]));
   };
 
   const handleLanguageChange = (e) =>{
