@@ -23,7 +23,7 @@ const GptSearchBoxTab = () => {
     
 
     const respon = await suggestion.json();
-    const movieName = respon.d.map((data)=>data.qid?data.l:'')
+    const movieName = respon.d.map((data)=>data.qid?data:'')
 
      dispatch(addMovieSearchSuggestion(movieName));
   };
@@ -68,13 +68,15 @@ const GptSearchBoxTab = () => {
               movieSuggestionsList.map((movieName, i) => (
                 <li
                   key={i}
-                  className="m-4 col-span-9"
+                  className="m-2 col-span-9 flex hover:bg-gray-800 rounded-lg"
                   onClick={() =>
                     (searchText.current.value = movieName) &&
                     handleGptSearchClick(movieName)
                   }
                 >
-                  {movieName}
+                  <img className="h-10 mr-2" src={movieName.i.imageUrl}></img>
+                  
+                  {movieName.l}
                 </li>
               ))}
           </ul>
