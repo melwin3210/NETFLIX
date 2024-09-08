@@ -2,11 +2,14 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleSearchView } from '../utils/gptSlice'
 import { addSearchedMovie } from '../utils/movieSlice'
+import useMovieDetails from '../hooks/useMovieDetails'
 
 const MovieCard = ({movieData}) => {
   const dispatch = useDispatch()
+  const { reFetch } = useMovieDetails();
   const movieCardClick = async  (movieName) => {
     dispatch(addSearchedMovie(movieName))
+    reFetch(movieName);
     dispatch(toggleSearchView());
 
   }

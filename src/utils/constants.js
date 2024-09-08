@@ -6,3 +6,6 @@ export const SUPPORTED_LANGUAGES = [
     {identifier: 'spanish', name:'Spanish'}
 ]
 export const YOUTUBE_SEARCH_SUGGEST_API = 'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q='
+export const OMBD_API = "https://www.omdbapi.com/?apikey="
+export const IMBD_API = 'https://v3.sg.media-imdb.com/suggestion/x/'
+export const IMDB_API_PARAMS = '.json?includeVideos=1'

@@ -1,27 +1,27 @@
 import { useDispatch } from "react-redux";
 import { addSearchedMovie } from "../utils/movieSlice";
 import { useEffect } from "react";
+import { OMBD_API } from "../utils/constants";
 
 const useMovieDetails = (searchText) => {
-    console.log("ijscusah  ",searchText);
     
   const dispatch = useDispatch();
 
   
 
-  const movieDetail = async () => {
+  const movieDetail = async (query) => {
     
-    if(searchText){
+    if(searchText||query){
         dispatch(
             addSearchedMovie({
               searching: "inProgress",
             })
           );
         const data = await fetch(
-            "https://www.omdbapi.com/?apikey=" +
+          OMBD_API +
               process.env.REACT_APP_OMDB_KEY +
               "&t=" +
-              searchText
+             ( searchText || query)
           );
           const {
             Poster,
@@ -29,9 +29,7 @@ const useMovieDetails = (searchText) => {
             Title,
             Year,
             Director,
-            Writer,
             Actors,
-            Language,
             imdbRating,
             Error,
           } = await data.json();
@@ -52,9 +50,10 @@ const useMovieDetails = (searchText) => {
 
     
   };
-  useEffect(() => {
-    movieDetail();
-  }, []);
+  // useEffect(() => {
+  //   movieDetail();
+  // }, []);
+  return {reFetch:movieDetail }
 };
 
 export default useMovieDetails;
