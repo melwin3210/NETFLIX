@@ -7,6 +7,7 @@ import useMovieDetails from '../hooks/useMovieDetails'
 const MovieCard = ({movieData}) => {
   const dispatch = useDispatch()
   const { reFetch } = useMovieDetails();
+  const gptSearchPage = useSelector((store) => store.gpt.showGptSearch);
   const movieCardClick = async  (movieName) => {
     dispatch(addSearchedMovie(movieName))
     reFetch(movieName);
@@ -14,7 +15,7 @@ const MovieCard = ({movieData}) => {
 
   }
   return (
-    <div onClick={()=>movieCardClick(movieData.movie_name)} className='w-28 pr-4'>
+    <div onClick={()=> (!gptSearchPage) && movieCardClick(movieData.movie_name)} className='w-28 pr-4'>
         {movieData.moviePosterUrl && <img alt='Movie Cart' src={movieData.moviePosterUrl}  ></img>}
         <p className='text-white'>{movieData.movieName?movieData.movieName:''}</p>
     </div>
