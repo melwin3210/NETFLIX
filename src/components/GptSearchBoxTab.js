@@ -29,11 +29,7 @@ const GptSearchBoxTab = () => {
      dispatch(addMovieSearchSuggestion(movieName));
   };
   useEffect(() => {
-    const timer = setTimeout(() => {
-     
-        movienameSuggest()
-      
-    }, 500);
+    const timer = setTimeout(() => movienameSuggest() , 200);
 
     return () => {
       clearTimeout(timer);
