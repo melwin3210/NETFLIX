@@ -29,7 +29,7 @@ const GptSearchBoxTab = () => {
     movieName && dispatch(addMovieSearchSuggestion(movieName));
   };
   useEffect(() => {
-    const timer = setTimeout(() => movienameSuggest() , 200);
+    const timer = setTimeout(() => searchQuery && movienameSuggest() , 200);
 
     return () => {
       clearTimeout(timer);
@@ -37,7 +37,7 @@ const GptSearchBoxTab = () => {
   }, [searchQuery]);
 
   const handleGptSearchClick = async (suggestion) => {
-    reFetch(searchQuery).then(()=>{
+    reFetch(suggestion).then(()=>{
       setSearchQuery('')
     })
     setSearch(true);
@@ -63,7 +63,7 @@ const GptSearchBoxTab = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           ></input>
           <button
-            onClick={handleGptSearchClick}
+            onClick={()=>handleGptSearchClick(searchQuery)}
             className=" col-span-3 m-4 py-2 px-4  bg-red-700 text-white rounded-lg"
           >
             {search ? "Loading" : lang[langKey]?.search}
@@ -79,11 +79,11 @@ const GptSearchBoxTab = () => {
                   key={i}
                   className="m-4 col-span-9 flex hover:bg-gray-800 rounded-lg"
                   onClick={() =>
-                    (searchText.current.value = movieName) &&
-                    handleGptSearchClick(movieName)
+                    
+                    handleGptSearchClick(movieName.l)
                   }
                 >
-                  <img className="h-10 mr-2" src={movieName.i.imageUrl}></img>
+                  <img className="h-10 mr-2" src={movieName?.i?.imageUrl}></img>
                   
                   {movieName.l}
                 </li>
