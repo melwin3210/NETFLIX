@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
 import { addMovieSearchSuggestion } from "../utils/searchSuggestionSlice";
@@ -24,9 +24,9 @@ const GptSearchBoxTab = () => {
     
 
     const respon = await suggestion.json();
-    const movieName = respon.d.map((data)=>data.qid?data:'')
+    const movieName = respon?.d?.map((data)=>data.qid?data:'')
 
-     dispatch(addMovieSearchSuggestion(movieName));
+    movieName && dispatch(addMovieSearchSuggestion(movieName));
   };
   useEffect(() => {
     const timer = setTimeout(() => movienameSuggest() , 200);
@@ -37,8 +37,8 @@ const GptSearchBoxTab = () => {
   }, [searchQuery]);
 
   const handleGptSearchClick = async (suggestion) => {
-    reFetch(searchText.current.value).then(()=>{
-      searchText.current.value = "";
+    reFetch(searchQuery).then(()=>{
+      setSearchQuery('')
     })
     setSearch(true);
     setSelectedSuggestion(suggestion);

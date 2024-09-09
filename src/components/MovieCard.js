@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toggleSearchView } from '../utils/gptSlice'
 import { addSearchedMovie } from '../utils/movieSlice'
 import useMovieDetails from '../hooks/useMovieDetails'
