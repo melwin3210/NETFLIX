@@ -63,12 +63,12 @@ const GptSearchBoxTab = () => {
       </div>
       {movieSuggestionsList.length > 0 && !selectedSuggestion && (
         <div className="md:p-0  flex justify-center ">
-          <ul className="md:w-1/2 w-1  grid grid-cols-12 absolute bg-gradient-to-r from-black  text-white">
+          <ul className="md:w-1/2 w-full  grid grid-cols-12 absolute bg-gradient-to-r from-black  text-white">
             {movieSuggestionsList &&
               movieSuggestionsList.map((movieName, i) => (
                 <li
                   key={i}
-                  className="m-2 col-span-9 flex hover:bg-gray-800 rounded-lg"
+                  className="m-4 col-span-9 flex hover:bg-gray-800 rounded-lg"
                   onClick={() =>
                     (searchText.current.value = movieName) &&
                     handleGptSearchClick(movieName)
