@@ -10,16 +10,17 @@ const GptSearchBoxTab = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState(false);
   const { reFetch } = useMovieDetails();
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedSuggestion, setSelectedSuggestion] = useState(null);
   const langKey = useSelector((store) => store?.config?.lang);
   let movieSuggestionsList = useSelector(
     (store) => store?.suggestion?.movieSuggestions
   );
 
-  const movienameSuggest = async (text) => {
+  const movienameSuggest = async () => {
     setSelectedSuggestion(null);
-     const suggestion = await fetch(PROXY_API+IMBD_API+text+IMDB_API_PARAMS)
-    // const suggestion = await fetch(YOUTUBE_SEARCH_SUGGEST_API + text);
+     const suggestion = await fetch(PROXY_API+IMBD_API+searchQuery+IMDB_API_PARAMS)
+    // const suggestion = await fetch(YOUTUBE_SEARCH_SUGGEST_API + searchQuery);
     
 
     const respon = await suggestion.json();
@@ -27,6 +28,13 @@ const GptSearchBoxTab = () => {
 
      dispatch(addMovieSearchSuggestion(movieName));
   };
+  useEffect(() => {
+    const timer = setTimeout(() => movienameSuggest() , 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
 
   const handleGptSearchClick = async (suggestion) => {
     reFetch(searchText.current.value).then(()=>{
@@ -51,7 +59,8 @@ const GptSearchBoxTab = () => {
             type="text"
             className="p-4 m-4 col-span-9"
             placeholder={lang[langKey]?.gptSearchPlaceHolder}
-            onChange={(e) => movienameSuggest(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           ></input>
           <button
             onClick={handleGptSearchClick}
