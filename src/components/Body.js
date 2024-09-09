@@ -3,6 +3,7 @@ import Login from './Login'
 import Browse from './Browse'
 import { createBrowserRouter, useNavigate } from 'react-router-dom'
 import { RouterProvider } from 'react-router-dom'
+import ShimmerUI from './ShimmerUI'
 
 
 const Body = () => {
@@ -12,11 +13,15 @@ const Body = () => {
     const appRouter = createBrowserRouter([
         {
             path: '/',
-            element: <Login/>
+            element: <ShimmerUI/>
         },
         {
             path: '/browse',
             element: <Browse/>
+        },
+        {
+            path:'/login',
+            element:<Login/>
         }
     ])
   return (

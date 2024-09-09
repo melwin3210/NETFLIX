@@ -3,10 +3,10 @@ export const MAIN_MOVIES = [
     
   {
     movieTrailerUrl:
-      "https://www.youtube.com/embed/o17MF9vnabg?si=yYfK5u-zzU9lM7g9&autoplay=1&mute=1",
-    movie_name: "Mufasa: The Lion King",
+      "https://www.youtube.com/embed/49xWJJvpjzI?si=yO-04F3j37pvyhox&autoplay=1&mute=1",
+    movie_name: "Avengers: Infinity War",
     language: "English",
-    description:"Simba, having become king of the Pride Lands, is determined for his cub to follow in his paw prints while the origins of his late father Mufasa are explored."
+    description:"The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe."
   }
 ];
 export const UPCOMING_MOVIES_DATA = [
