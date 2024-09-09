@@ -37,7 +37,7 @@ const GptSearchBoxTab = () => {
   }, [searchQuery]);
 
   const handleGptSearchClick = async (suggestion) => {
-    reFetch(suggestion).then(()=>{
+    suggestion && reFetch(suggestion).then(()=>{
       setSearchQuery('')
     })
     setSearch(true);
