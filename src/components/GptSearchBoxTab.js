@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
-import { addMovieSearchSuggestion } from "../utils/searchSuggestionSlice";
+import {  addSearchSuggestionsCache } from "../utils/searchSuggestionSlice";
 import { IMBD_API, IMDB_API_PARAMS, PROXY_API, YOUTUBE_SEARCH_SUGGEST_API } from "../utils/constants";
 import useMovieDetails from "../hooks/useMovieDetails";
 
@@ -13,20 +13,42 @@ const GptSearchBoxTab = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSuggestion, setSelectedSuggestion] = useState(null);
   const langKey = useSelector((store) => store?.config?.lang);
-  let movieSuggestionsList = useSelector(
-    (store) => store?.suggestion?.movieSuggestions
-  );
+  const [suggestions, setSuggestion] = useState([])
+ 
+  let cache = useSelector((store)=> store?.suggestion?.suggestionsCache)
 
   const movienameSuggest = async () => {
-    setSelectedSuggestion(null);
-     const suggestion = await fetch(PROXY_API+IMBD_API+searchQuery+IMDB_API_PARAMS)
-    // const suggestion = await fetch(YOUTUBE_SEARCH_SUGGEST_API + searchQuery);
     
+    setSelectedSuggestion(null);
+    if(cache[searchQuery]){
+      setSuggestion(cache[searchQuery])
+    }else{
+      if(!search){
+        const suggestion = await fetch(PROXY_API+IMBD_API+searchQuery+IMDB_API_PARAMS)
+    // const suggestion = await fetch(YOUTUBE_SEARCH_SUGGEST_API + searchQuery);
 
     const respon = await suggestion.json();
-    const movieName = respon?.d?.map((data)=>data.qid?data:'')
+    const movieDetails = await respon?.d?.map((data)=>(data.qid==='movie')?data:'')
+    let suggestionsDataList = {}
 
-    movieName && dispatch(addMovieSearchSuggestion(movieName));
+    const filteredData = movieDetails.filter(Boolean).map((movie)=>{
+      let movieData = {}
+        movieData={
+          'imageUrl':movie?.i?.imageUrl,
+          'movieName':movie?.l
+        }
+        return movieData
+
+    })
+    
+    setSuggestion(filteredData)
+    
+    suggestionsDataList = {
+      [searchQuery]:filteredData
+    }
+    dispatch(addSearchSuggestionsCache(suggestionsDataList))
+      }
+    }
   };
   useEffect(() => {
     const timer = setTimeout(() => searchQuery && movienameSuggest() , 200);
@@ -37,13 +59,16 @@ const GptSearchBoxTab = () => {
   }, [searchQuery]);
 
   const handleGptSearchClick = async (suggestion) => {
+    setSearch(true);
+    setSearchQuery(suggestion)
     suggestion && reFetch(suggestion).then(()=>{
       setSearchQuery('')
+      setSearch(false);
     })
-    setSearch(true);
+   
     setSelectedSuggestion(suggestion);
-    dispatch(addMovieSearchSuggestion([]));
-    setSearch(false);
+    setSuggestion([])
+    
     
   };
 
@@ -70,22 +95,22 @@ const GptSearchBoxTab = () => {
           </button>
         </form>
       </div>
-      {movieSuggestionsList.length > 0 && !selectedSuggestion && (
+      {suggestions.length > 0 && !selectedSuggestion && (
         <div className="md:p-0  flex justify-center ">
           <ul className="md:w-1/2 w-full  grid grid-cols-12 absolute bg-gradient-to-r from-black  text-white">
-            {movieSuggestionsList &&
-              movieSuggestionsList.map((movieName, i) => (
+            {suggestions &&
+              suggestions.map((movie, i) => (
                 <li
                   key={i}
                   className="m-4 col-span-9 flex hover:bg-gray-800 rounded-lg"
                   onClick={() =>
                     
-                    handleGptSearchClick(movieName.l)
+                    handleGptSearchClick(movie.movieName)
                   }
                 >
-                  <img className="h-10 mr-2" src={movieName?.i?.imageUrl}></img>
+                  <img className="h-10 mr-2" src={movie?.imageUrl}></img>
                   
-                  {movieName.l}
+                  {movie.movieName}
                 </li>
               ))}
           </ul>

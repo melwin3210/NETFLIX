@@ -3,25 +3,35 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchSuggestionSlice = createSlice({
   name: "searchSuggestion",
   initialState: {
-    movieSuggestions: [],
+
+    suggestionsCache:{}
   },
   reducers: {
-    addMovieSearchSuggestion: (state, action) => {
-      state.movieSuggestions = moviesSuggest(action.payload);
+
+    addSearchSuggestionsCache: (state, action) => {
+      state.suggestionsCache = cacheStorageCheck(state.suggestionsCache,action.payload) 
     },
   },
 });
 
-const moviesSuggest = (suggestions) => {
-
-  return suggestions
+const cacheStorageCheck = (cacheList, latestUpdate) => {
+  let copyList = {...cacheList}
+  let list = {}
+  
+  if(Object.keys(copyList).length>100){
+    let firstKey = Object.keys(copyList)[0];
     
-    .filter(Boolean) // Remove null values from the array
-    .filter((value, index, self) => self.indexOf(value) === index); // Remove duplicates
-};
+    // Delete the first key-value pair
+    delete copyList[firstKey];
+
+  }
+ return list = {...copyList, ...latestUpdate}
+  
+}
 
 
 
-export const { addMovieSearchSuggestion } = searchSuggestionSlice.actions;
+
+export const {   addSearchSuggestionsCache} = searchSuggestionSlice.actions;
 
 export default searchSuggestionSlice.reducer;
