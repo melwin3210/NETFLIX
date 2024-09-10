@@ -52,6 +52,8 @@ const GptSearchBoxTab = () => {
   };
   useEffect(() => {
     const timer = setTimeout(() => searchQuery && movienameSuggest() , 200);
+    !searchQuery && setSuggestion([])
+    
 
     return () => {
       clearTimeout(timer);
