@@ -43,6 +43,7 @@ const useMovieDetails = (searchText) => {
               actors: Actors,
               IMDBrating: imdbRating,
               Error: Error,
+              searchedMovie:query || searchText
             })
           );
 
