@@ -44,7 +44,8 @@ const GptMovieSuggestion = ({video, setVideo, setTrailer, trailer}) => {
     </div>}
     <div className='md:w-1/2 justify-center m-auto'>
       <button className='bg-red-500 text-white w-full h-12 ' onClick={ goBackOrTrailerToggle }>{ video? "Go Back" : "Watch Trailer"}</button>
-      { trailer.length === 0 && video && <ShimmerUI page={'movieSearch'} />}
+      { trailer?.length === 0 && video && <ShimmerUI page={'movieSearch'} />}
+      { !trailer && <MoviesList title={"App is temporarily down. Try after some time.."} movies={[]}></MoviesList> }
        <div className='w-full'>{video && trailer?.length>=1 && <VideoCard trailerId={trailer} />}</div>
     </div>
 
