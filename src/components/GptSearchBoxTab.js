@@ -5,7 +5,7 @@ import {  addSearchSuggestionsCache } from "../utils/searchSuggestionSlice";
 import { IMBD_API, IMDB_API_PARAMS, PROXY_API, YOUTUBE_SEARCH_SUGGEST_API } from "../utils/constants";
 import useMovieDetails from "../hooks/useMovieDetails";
 
-const GptSearchBoxTab = () => {
+const GptSearchBoxTab = ({setVideo, setTrailer}) => {
   let searchText = useRef(null);
   const dispatch = useDispatch();
   const [search, setSearch] = useState(false);
@@ -61,6 +61,8 @@ const GptSearchBoxTab = () => {
   }, [searchQuery]);
 
   const handleGptSearchClick = async (suggestion) => {
+    setTrailer([])
+    setVideo(false)
     setSearch(true);
     setSearchQuery(suggestion)
     suggestion && reFetch(suggestion).then(()=>{
