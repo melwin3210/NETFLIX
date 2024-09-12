@@ -45,7 +45,7 @@ const useMovieDetails = (searchText) => {
               IMDBrating: imdbRating,
               Error: Error,
               searchedMovie:query || searchText,
-              Language: Language!=="N/A" ? Language.split(',')[0]?.trim() : ''
+              Language: (Language && Language!=="N/A" )? Language.split(',')[0]?.trim() : ''
             })
           );
 

@@ -31,7 +31,7 @@ const GptMovieSuggestion = ({video, setVideo, setTrailer, trailer}) => {
   
   
   useMovieDetails(searchedMovie)
-  if(searchedMovie?.searching) return <ShimmerUI page={'movieSearch'} />
+  if((searchedMovie?.searching)&& (!searchedMovie?.Error) ) return <ShimmerUI page={'movieSearch'} />
   if((!searchedMovie?.title) && (!searchedMovie?.Error)) return null
   const arrayConvertMovie = [searchedMovie]
 
@@ -40,7 +40,7 @@ const GptMovieSuggestion = ({video, setVideo, setTrailer, trailer}) => {
     <div>
       { !video &&  <div className='flex bg-black bg-opacity-80 md:w-1/2 justify-center mt-10 m-auto'>
       {<MoviesList title={searchedMovie.title || searchedMovie.Error} movies={arrayConvertMovie}></MoviesList>}
-      { trailer && <MovieDetails  movieDetails={searchedMovie}/>}
+      { trailer &&  !searchedMovie.Error &&<MovieDetails  movieDetails={searchedMovie}/>}
       
     </div>}
     <div className='md:w-1/2 justify-center m-auto'>
