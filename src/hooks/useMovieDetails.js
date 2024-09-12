@@ -28,6 +28,7 @@ const useMovieDetails = (searchText) => {
             Plot,
             Title,
             Year,
+            Language,
             Director,
             Actors,
             imdbRating,
@@ -43,7 +44,8 @@ const useMovieDetails = (searchText) => {
               actors: Actors,
               IMDBrating: imdbRating,
               Error: Error,
-              searchedMovie:query || searchText
+              searchedMovie:query || searchText,
+              Language: Language!=="N/A" ? Language.split(',')[0]?.trim() : ''
             })
           );
 

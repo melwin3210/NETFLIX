@@ -12,7 +12,7 @@ const GptMovieSuggestion = ({video, setVideo, setTrailer, trailer}) => {
   const goBackOrTrailerToggle = async () =>{
     setVideo(!video)
     if(!video){
-      const dataa = await fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchedMovie.searchedMovie+'%20movie%20trailer&key='+ process.env.REACT_APP_YOUTUBE_API_KEY)
+      const dataa = await fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q='+searchedMovie.searchedMovie+searchedMovie.Language+'%20movie%20trailer&key='+ process.env.REACT_APP_YOUTUBE_API_KEY)
     const json = await dataa.json()
      let r = json?.items?.map((data)=>{
       if(data?.snippet?.title?.toLowerCase().includes('official')){
