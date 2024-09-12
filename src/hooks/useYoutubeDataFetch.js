@@ -21,10 +21,23 @@ const useYoutubeApi = () => {
         })
         .filter(Boolean);
         const  {snippet, id} = await r[0]
+        function getMovieName(pin) {
+            // Find the index of the first opening parenthesis and the first pipe symbol
+            const indexParenthesis = pin.indexOf('(');
+            const indexPipe = pin.indexOf('|');
+          
+            // Determine the minimum index of the two (if any of them are found)
+            const minIndex = Math.min(indexParenthesis === -1 ? Infinity : indexParenthesis, 
+                                       indexPipe === -1 ? Infinity : indexPipe);
+          
+            // Extract the substring up to the minimum index if found, otherwise return the original string
+            return minIndex !== Infinity ? pin.substring(0, minIndex).trim() : pin.trim();
+          }
+          
         r && dispatch(
             addMainMovie({
               movieTrailerURL: id?.videoId,
-              movieName: snippet?.title,
+              movieName: getMovieName(snippet?.title),
               description: snippet?.description,
             })
           );
