@@ -10,3 +10,4 @@ export const OMBD_API = "https://www.omdbapi.com/?apikey="
 export const IMBD_API = 'https://v3.sg.media-imdb.com/suggestion/x/'
 export const IMDB_API_PARAMS = '.json?includeVideos=1'
 export const PROXY_API = 'https://api.allorigins.win/raw?url='
+export const YOUTUBE_VIDEO_SEARCH_API = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='
