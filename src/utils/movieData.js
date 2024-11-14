@@ -3,7 +3,7 @@ export const MAIN_MOVIES = [
     
   {
     movieTrailerUrl:
-      "https://www.youtube.com/embed/49xWJJvpjzI?si=yO-04F3j37pvyhox&autoplay=1&mute=1",
+      "https://www.youtube.com/embed/QwievZ1Tx-8?si=jltQZ9U7wvPdFUEF?si=yO-04F3j37pvyhox&autoplay=1&mute=1",
     movie_name: "Avengers: Infinity War",
     language: "English",
     description:"The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe."
