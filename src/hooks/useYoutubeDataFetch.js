@@ -13,7 +13,7 @@ const useYoutubeApi = () => {
       const json = await dataa.json();
       let r = json?.items
         ?.map((data) => {
-          if (data?.snippet?.title?.toLowerCase().includes("official")) {
+          if (data?.snippet?.title?.toLowerCase().includes("trailer")) {
             return data;
           } else {
             return null;
